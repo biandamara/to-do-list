@@ -5,6 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // impor halaman
 import Home from "./pages/Home";
 
+// impor file css
+import "./assets/styles/Global.css";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
