@@ -25,14 +25,36 @@ function Home() {
   }, [tasks]);
 
   // function add task
-
-  // function update tasks
+  function addTask(task) {
+    setTasks([...tasks, task]);
+  }
 
   // function completed task
+  function handleCompleted(id) {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === task.id) {
+          return { ...task, completed: true };
+        }
+        return task;
+      })
+    );
+  }
 
   // function delete tasks
+  function handleDelete(id) {
+    setTasks(
+      tasks.filter((task) => {
+        return task.id !== task.id;
+      })
+    );
+  }
 
   // function clear tasks
+  function handleClear() {
+    setTasks([]);
+    localStorage.removeItem("To-do List", JSON.stringify([]));
+  }
 
   return (
     <body className={`${style.body}`}>
@@ -56,16 +78,20 @@ function Home() {
         {/* badge - end */}
 
         {/* form - start */}
-        <Form />
+        <Form addTask={addTask} />
         {/* form - end */}
 
         {/* list - start */}
-        <List />
+        <List
+          taks={tasks}
+          handleCompleted={handleCompleted}
+          handleDelete={handleDelete}
+        />
         {/* list - end */}
 
-        {/* clear task button - start */}
-        <button>Clear</button>
-        {/* clear task button - end */}
+        {/* clear tasks button - start */}
+        <button onClick={() => handleClear()}>Clear</button>
+        {/* clear tasks button - end */}
       </div>
       {/* card - end */}
     </body>
