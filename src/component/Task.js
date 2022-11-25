@@ -1,5 +1,9 @@
 import React from "react";
 
+// import module
+import { ListItem, Checkbox, Typography, IconButton } from "@mui/material";
+// import CloseIcon from "@mui/icons-material/Close";
+
 function Task({ task, handleCompleted, handleDelete }) {
   // function handle checkbox if the task is complete
   function checkboxButton() {
@@ -13,35 +17,25 @@ function Task({ task, handleCompleted, handleDelete }) {
 
   return (
     <body>
-      <ul>
+      <ListItem>
         {/* checkbox button - start */}
-        <li>
-          <input
-            type={`checkbox`}
-            checked={task.completed}
-            onClick={checkboxButton}
-          ></input>
-        </li>
+        <Checkbox checked={task.completed} onClick={checkboxButton} />
         {/* checkbox button - end */}
 
         {/* tasks - start */}
-        <li>
-          <p
-            style={{
-              textDecoration: task.completed ? "line-through" : null,
-            }}
-          >
-            {task.task}
-          </p>
-          {/* tasks - end */}
-        </li>
+        <Typography
+          style={{
+            textDecoration: task.completed ? "line-through" : null,
+          }}
+        >
+          {task.task}
+        </Typography>
+        {/* tasks - end */}
 
         {/* delete button - start */}
-        <li>
-          <button onClick={deleteButton}>X</button>
-        </li>
+        <IconButton onClick={deleteButton}>{/* <CloseIcon /> */}X</IconButton>
         {/* delete button - end */}
-      </ul>
+      </ListItem>
     </body>
   );
 }

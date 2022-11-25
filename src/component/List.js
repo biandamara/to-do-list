@@ -1,21 +1,24 @@
 import React from "react";
 
+// import module
+import List from "@mui/material/List";
+
 // import components
 import Task from "./Task";
 
-function List({ tasks, handleComplete, handleDelete }) {
+function ListTask({ tasks, handleCompleted, handleDelete }) {
   return (
-    <body>
-      {/* {tasks.map((task) => (
+    <List>
+      {tasks.map((task) => (
         <Task
           key={task.id}
           task={task}
-          handleComplete={handleComplete}
+          handleCompleted={handleCompleted}
           handleDelete={handleDelete}
         />
-      ))} */}
-    </body>
+      ))}
+    </List>
   );
 }
 
-export default List;
+export default ListTask;
