@@ -34,7 +34,7 @@ function Home() {
     setTasks(
       tasks.map((task) => {
         if (task.id === task.id) {
-          return { ...task, completed: true };
+          return { ...task, completed: !task.completed };
         }
         return task;
       })

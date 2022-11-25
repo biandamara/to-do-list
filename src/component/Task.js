@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task(task, handleCompleted, handleDelete) {
+function Task({ task, handleCompleted, handleDelete }) {
   // function handle checkbox if the task is complete
   function checkboxButton() {
     handleCompleted(task.id);
