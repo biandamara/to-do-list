@@ -1,0 +1,27 @@
+.form {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.input {
+  font-size: 16px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.submit {
+  font-size: 16px;
+  width: 100px;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid rgb(97, 97, 97);
+  border-radius: 10px;
+  outline: none;
+}
+
+.submit:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}

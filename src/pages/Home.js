@@ -1,13 +1,16 @@
 import React from "react";
 
+// import styles
+import style from "../assets/styles/Home.module.css";
+
 function Home() {
   return (
     <body>
       {/* input task form - start */}
-      <div className="form">
+      <div className={`${style.form}`}>
         <form>
-          <input className="input" placeholder="Add Task" />
-          <button className="add-button" type="submit">
+          <input className={`${style.input}`} placeholder={`Add Task`} />
+          <button className={`${style.submit}`} type={`submit`}>
             Add
           </button>
         </form>
