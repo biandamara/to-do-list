@@ -1,7 +1,7 @@
 import React from "react";
 
 // import components
-import Task from "../component/Task";
+import Task from "../components/Task";
 
 function List() {
   return <body></body>;

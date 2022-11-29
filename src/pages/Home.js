@@ -4,8 +4,8 @@ import React, {
 } from "react";
 
 // import components
-import Form from "../component/Form";
-import List from "../component/List";
+import Form from "../components/Form";
+import List from "../components/List";
 
 // import styles
 import style from "../assets/styles/Home.module.css";
@@ -18,7 +18,7 @@ function Home() {
       {/* header - end */}
 
       {/* remaining tasks - start */}
-      {/* <div className={`${style.header}`}>Pending tasks ({tasksRemaining})</div> */}
+      <div></div>
       {/* remaining tasks - end */}
 
       {/* form task - start */}
@@ -28,6 +28,10 @@ function Home() {
       {/* list tasks - start */}
       <List />
       {/* list tasks - end */}
+
+      {/* clear all tasks button - start */}
+      <button>Clear</button>
+      {/* clear all tasks button - end */}
     </body>
   );
 }
