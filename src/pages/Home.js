@@ -1,30 +1,45 @@
-import React, { useState } from "react";
-
-// import styles
-import style from "../assets/styles/Home.module.css";
+import React, { useEffect, useState } from "react";
+import Form from "../components/Form";
+import List from "../components/List";
 
 function Home() {
-  const [text, setText] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [todos, setTodos] = useState([]);
 
-  // add tasks
-  function addTask(task) {
-    setTasks(task);
+  useEffect(() => {
+    const storageTodos = JSON.parse(
+      localStorage.getItem("to-do-list-localStorage")
+    );
+    if (storageTodos) {
+      setTodos(storageTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("to-do-list-localStorage", JSON.stringify(todos));
+  }, [todos]);
+
+  // function add task
+  function addTodo(todo) {
+    setTodos([todo, ...todos]);
   }
 
-  // update tasks
-  function updateTasl(task) {
-    setTasks(task);
+  // function completed task
+  function toggleComplete(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      })
+    );
   }
 
-  // delete task
-  function deleteTask(task) {
-    setTasks(task);
-  }
-
-  // clear tasks
-  function clearTasks() {
-    setTasks("");
+  function removeTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
   }
 
   return (
@@ -33,37 +48,17 @@ function Home() {
       <h1>To-do List</h1>
       {/* header - end */}
 
-      {/* remaining tasks - start */}
-      <div></div>
-      {/* remaining tasks - end */}
+      {/* form - start */}
+      <Form addTodo={addTodo} />
+      {/* form - end */}
 
-      {/* form task - start */}
-      <div>
-        <form>
-          <input
-            value={`text`}
-            placeholder={`Entar task`}
-            onChange={(e) => setText(e.target.value)}
-          ></input>
-        </form>
-      </div>
-      {/* form task - end */}
-
-      {/* list tasks - start */}
-      <div>
-        {tasks.map((data, i) => {
-          return (
-            <p>
-              {i + 1}. {data}
-            </p>
-          );
-        })}
-      </div>
-      {/* list tasks - end */}
-
-      {/* clear all tasks button - start */}
-      <button>Clear</button>
-      {/* clear all tasks button - end */}
+      {/* to-do list - start */}
+      <List
+        todos={todos}
+        removeTodo={removeTodo}
+        toggleComplete={toggleComplete}
+      />
+      {/* to-do list - end */}
     </body>
   );
 }

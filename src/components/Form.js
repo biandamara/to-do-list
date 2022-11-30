@@ -1,12 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 // import style
-import styles from "../assets/styles/Form.module.css";
+import style from "../assets/styles/Form.module.css";
 
-function Form() {
+function Form({ addTodo }) {
+  const [todo, setTodo] = useState({
+    id: "",
+    task: "",
+    completed: false,
+  });
+
+  // function submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (todo.task.trim()) {
+      addTodo({ ...todo, id: uuidv4() });
+      setTodo({ ...todo, task: "" });
+    }
+  }
+
+  // function new task
+  function handleTaskInputChange(e) {
+    setTodo({ ...todo, task: e.target.value });
+  }
+
   return (
     <body>
-      <input></input>
+      <div className={`${style.form}`}>
+        {/* from for new task - start */}
+        <form className="todo-form" onSubmit={handleSubmit}>
+          {/* input text - start */}
+          <input
+            label="Task"
+            type="text"
+            name="task"
+            value={todo.task}
+            onChange={handleTaskInputChange}
+          />
+          {/* input text - end */}
+
+          {/* submit button - start */}
+          <button type="submit">Submit</button>
+          {/* submit button - end */}
+        </form>
+        {/* from for new task - end */}
+      </div>
     </body>
   );
 }
