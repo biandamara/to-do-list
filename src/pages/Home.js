@@ -7,8 +7,11 @@ import style from "../assets/styles/Home.module.css";
 
 function Home() {
   const [todos, setTodos] = useState([]);
-  const [todosRemaining, setTodoRemaining] = useState(0);
+  const [todosRemaining, setTodosRemaining] = useState(0);
+  const [todosCompeleted, setTodosCompeleted] = useState(0);
+  const [allTodos, setAllTodos] = useState(0);
 
+  // save to local storage
   useEffect(() => {
     const storageTodos = JSON.parse(
       localStorage.getItem("to-do-list-localStorage")
@@ -22,9 +25,21 @@ function Home() {
     localStorage.setItem("to-do-list-localStorage", JSON.stringify(todos));
   }, [todos]);
 
+  // all tasks
+  useEffect(
+    () => setAllTodos(todos.filter((todo) => todo).length),
+    [todos, allTodos]
+  );
+
+  // tasks completed
+  useEffect(
+    () => setTodosCompeleted(todos.filter((todo) => todo.completed).length),
+    [todos, todosCompeleted]
+  );
+
   // tasks remaining
   useEffect(
-    () => setTodoRemaining(todos.filter((todo) => !todo.completed).length),
+    () => setTodosRemaining(todos.filter((todo) => !todo.completed).length),
     [todos, todosRemaining]
   );
 
@@ -75,11 +90,52 @@ function Home() {
               </div>
               {/* form - end */}
 
-              {/* task remaining - start */}
-              <div className={`text-center`}>
-                <p>Pending tasks ({todosRemaining})</p>
+              {/* status - start */}
+              <div className={`row g-2 ${style.status}`}>
+                <div className="col-lg-4 col-sm-6">
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="row">
+                        <i class="col card-text bi bi-inbox-fill text-secondary"></i>
+                        <p className="col card-text text-end">{allTodos}</p>
+                      </div>
+                      <br />
+                      <h2 className="card-title">Tasks</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-lg-4 col-sm-6">
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="row">
+                        <i class="col card-text bi bi-check-circle-fill text-success"></i>
+                        <p className="col card-text text-end">
+                          {todosCompeleted}
+                        </p>
+                      </div>
+                      <br />
+                      <h2 className="card-title">Completed</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-lg-4 col-sm-6">
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="row">
+                        <i class="col card-text bi bi-clock-fill text-warning"></i>
+                        <p className="col card-text text-end">
+                          {todosRemaining}
+                        </p>
+                      </div>
+                      <br />
+                      <h2 className="card-title">Remaining</h2>
+                    </div>
+                  </div>
+                </div>
               </div>
-              {/* task remaining - end */}
+              {/* status - end */}
 
               {/* to-do list - start */}
               <div className={`my-4`}>
