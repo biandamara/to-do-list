@@ -14,27 +14,38 @@ function Task({ todo, toggleComplete, removeTodo }) {
 
   return (
     <body>
-      <div className={`${style.task}`}>
+      <div className={`input-group mb-2 ${style.task}`}>
         {/* checkbox for completed task - start */}
-        <input
-          type={`checkbox`}
-          checked={todo.completed}
-          onClick={handleCheckboxClick}
-        />
+        <div className="input-group-text">
+          <input
+            className={`form-check-input`}
+            type={`checkbox`}
+            checked={todo.completed}
+            onClick={handleCheckboxClick}
+          />
+        </div>
         {/* checkbox for completed task - end */}
 
         {/* task - start */}
-        <p
+        <span
+          className={`input-group-text col`}
           style={{
             textDecoration: todo.completed ? "line-through" : null,
           }}
         >
           {todo.task}
-        </p>
+        </span>
+
         {/* task - end */}
 
         {/* delete button - start */}
-        <button onClick={handleRemoveClick}>X</button>
+        <button
+          className={`btn  btn-danger`}
+          type={`button`}
+          onClick={handleRemoveClick}
+        >
+          Delete
+        </button>
         {/* delete button - end */}
       </div>
     </body>

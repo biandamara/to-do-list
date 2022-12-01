@@ -29,19 +29,23 @@ function Form({ addTodo }) {
     <body>
       <div className={`${style.form}`}>
         {/* from for new task - start */}
-        <form className="todo-form" onSubmit={handleSubmit}>
+        <form className={`input-group`} onSubmit={handleSubmit}>
           {/* input text - start */}
           <input
+            className={`form-control`}
             label="Task"
             type="text"
             name="task"
             value={todo.task}
+            placeholder={`Add task`}
             onChange={handleTaskInputChange}
           />
           {/* input text - end */}
 
           {/* submit button - start */}
-          <button type="submit">Submit</button>
+          {/* <button className={`btn btn-primary`} type={`submit`}>
+            Submit
+          </button> */}
           {/* submit button - end */}
         </form>
         {/* from for new task - end */}
