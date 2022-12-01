@@ -7,6 +7,7 @@ import style from "../assets/styles/Home.module.css";
 
 function Home() {
   const [todos, setTodos] = useState([]);
+  const [todosRemaining, setTodoRemaining] = useState(0);
 
   useEffect(() => {
     const storageTodos = JSON.parse(
@@ -21,12 +22,18 @@ function Home() {
     localStorage.setItem("to-do-list-localStorage", JSON.stringify(todos));
   }, [todos]);
 
+  // tasks remaining
+  useEffect(
+    () => setTodoRemaining(todos.filter((todo) => !todo.completed).length),
+    [todos, todosRemaining]
+  );
+
   // function add task
   function addTodo(todo) {
     setTodos([todo, ...todos]);
   }
 
-  // function completed task
+  // function completed tasks
   function toggleComplete(id) {
     setTodos(
       todos.map((todo) => {
@@ -41,6 +48,9 @@ function Home() {
     );
   }
 
+  // function update tasks
+
+  // function delete tasks
   function removeTodo(id) {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
@@ -48,8 +58,8 @@ function Home() {
   return (
     <body className={`${style.body}`}>
       <div className={`container`}>
+        {/* card - start */}
         <div className={`container`}>
-          {/* card - start */}
           <div className={`card ${style.card}`}>
             <div className="card-body mx-3">
               {/* header - start */}
@@ -67,7 +77,7 @@ function Home() {
 
               {/* task remaining - start */}
               <div className={`text-center`}>
-                {/* <p>Task remaining ()</p> */}
+                <p>Pending tasks ({todosRemaining})</p>
               </div>
               {/* task remaining - end */}
 

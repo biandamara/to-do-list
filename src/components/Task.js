@@ -1,8 +1,5 @@
 import React from "react";
 
-// import styles
-import style from "../assets/styles/Task.module.css";
-
 function Task({ todo, toggleComplete, removeTodo }) {
   function handleCheckboxClick() {
     toggleComplete(todo.id);
@@ -14,7 +11,7 @@ function Task({ todo, toggleComplete, removeTodo }) {
 
   return (
     <body>
-      <div className={`input-group mb-2 ${style.task}`}>
+      <div className={`input-group mb-2`}>
         {/* checkbox for completed task - start */}
         <div className="input-group-text">
           <input
@@ -35,16 +32,21 @@ function Task({ todo, toggleComplete, removeTodo }) {
         >
           {todo.task}
         </span>
-
         {/* task - end */}
+
+        {/* edit button - start */}
+        <button className={`btn btn-warning`}>
+          <i class="bi bi-pencil-square"></i>
+        </button>
+        {/* edit button - end */}
 
         {/* delete button - start */}
         <button
-          className={`btn  btn-danger`}
+          className={`btn btn-danger`}
           type={`button`}
           onClick={handleRemoveClick}
         >
-          Delete
+          <i class="bi bi-trash3"></i>
         </button>
         {/* delete button - end */}
       </div>
