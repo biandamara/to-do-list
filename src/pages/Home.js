@@ -46,7 +46,7 @@ function Home() {
   }
 
   return (
-    <body className={`${style.body}`}>
+    <body className={`container ${style.body}`}>
       <div className={`container`}>
         {/* card - start */}
         <div className={`card ${style.card}`}>
