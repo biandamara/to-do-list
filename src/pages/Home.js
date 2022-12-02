@@ -84,14 +84,8 @@ function Home() {
               </div>
               {/* header - end */}
 
-              {/* form - start */}
-              <div className={`my-4`}>
-                <Form addTodo={addTodo} />
-              </div>
-              {/* form - end */}
-
               {/* status - start */}
-              <div className={`row g-2 ${style.status}`}>
+              <div className={`row g-2 my-4 ${style.status}`}>
                 <div className="col-lg-4 col-sm-6">
                   <div className="card">
                     <div className="card-body">
@@ -136,6 +130,12 @@ function Home() {
                 </div>
               </div>
               {/* status - end */}
+
+              {/* form - start */}
+              <div className={`my-4`}>
+                <Form addTodo={addTodo} />
+              </div>
+              {/* form - end */}
 
               {/* to-do list - start */}
               <div className={`my-4`}>
