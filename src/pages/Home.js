@@ -64,19 +64,6 @@ function Home() {
   }
 
   // function update tasks
-  function updateTodo(id, todo) {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            ...todo,
-          };
-        }
-        return todo;
-      })
-    );
-  }
 
   // function delete tasks
   function removeTodo(id) {
