@@ -10,7 +10,7 @@ function Task({ todo, toggleComplete, removeTodo }) {
   }
 
   return (
-    <body>
+    <>
       <div className={`input-group mb-2`}>
         {/* checkbox for completed task - start */}
         <div className="input-group-text">
@@ -50,7 +50,7 @@ function Task({ todo, toggleComplete, removeTodo }) {
         </button>
         {/* delete button - end */}
       </div>
-    </body>
+    </>
   );
 }
 

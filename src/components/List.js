@@ -5,7 +5,7 @@ import Task from "../components/Task";
 
 function List({ todos, removeTodo, toggleComplete }) {
   return (
-    <body>
+    <>
       {/* tasks - start */}
       <div>
         {todos.map((todo) => (
@@ -18,7 +18,7 @@ function List({ todos, removeTodo, toggleComplete }) {
         ))}
       </div>
       {/* tasks - end */}
-    </body>
+    </>
   );
 }
 

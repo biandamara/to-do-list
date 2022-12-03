@@ -23,7 +23,7 @@ function Form({ addTodo }) {
   }
 
   return (
-    <body>
+    <>
       <div>
         {/* from for new task - start */}
         <form className={`input-group`} onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ function Form({ addTodo }) {
         </form>
         {/* from for new task - end */}
       </div>
-    </body>
+    </>
   );
 }
 

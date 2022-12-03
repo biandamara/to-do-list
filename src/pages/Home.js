@@ -7,9 +7,9 @@ import style from "../assets/styles/Home.module.css";
 
 function Home() {
   const [todos, setTodos] = useState([]);
-  const [todosRemaining, setTodosRemaining] = useState(0);
-  const [todosCompeleted, setTodosCompeleted] = useState(0);
   const [allTodos, setAllTodos] = useState(0);
+  const [todosCompeleted, setTodosCompeleted] = useState(0);
+  const [todosRemaining, setTodosRemaining] = useState(0);
 
   // save to local storage
   useEffect(() => {
@@ -64,6 +64,19 @@ function Home() {
   }
 
   // function update tasks
+  function updateTodo(id, todo) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            ...todo,
+          };
+        }
+        return todo;
+      })
+    );
+  }
 
   // function delete tasks
   function removeTodo(id) {
@@ -74,7 +87,7 @@ function Home() {
     <body className={`${style.body}`}>
       <div className={`container`}>
         {/* card - start */}
-        <div className={`container`}>
+        <div className={`container ${style.outter}`}>
           <div className={`card ${style.card}`}>
             <div className="card-body mx-3">
               {/* header - start */}
